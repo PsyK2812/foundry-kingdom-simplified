@@ -1,0 +1,139 @@
+# Kingdom feats, transcribed from "Kingdom Rules (Simplified)".
+# perk.frequency marks feats with a limited use, tracked on the sheet.
+
+- name: Crush Dissent
+  identifier: crush-dissent
+  perk: { frequency: week }
+  text: Once per week, when your kingdom would gain Unrest, you can make a Stability check. On a success, you don't gain that Unrest.
+
+- name: Early Warning
+  identifier: early-warning
+  prerequisite: 8
+  text: Scouts watch your borders. The DM tells you one week in advance when an enemy army, raid, or monster attack is coming.
+
+- name: Endure Anarchy
+  identifier: endure-anarchy
+  text: While your kingdom's Unrest is 6 or higher, when you use Quell Unrest, your kingdom's Unrest decreases by an additional 1.
+
+- name: Expanded Ranks
+  identifier: expanded-ranks
+  prerequisite: 8
+  text: Each of your armies has 1 additional unit slot, filled with Militia.
+
+- name: Famed Realm
+  identifier: famed-realm
+  text: Whenever your kingdom earns Renown from a major event, crisis, or story milestone, it earns 1 additional Renown.
+
+- name: Festival Season
+  identifier: festival-season
+  perk: { frequency: fourWeeks }
+  text: Once every 4 weeks, you can spend 5 RP per kingdom level to declare a festival. Your kingdom's Unrest decreases by 2.
+
+- name: Free and Fair
+  identifier: free-and-fair
+  perk: { frequency: week }
+  text: Once per week, you can reassign an advisor at any time, instead of only at the start of a turn.
+
+- name: Grand Capital
+  identifier: grand-capital
+  prerequisite: 16
+  text: Your capital has 10 additional building slots.
+
+- name: Hardy Folk
+  identifier: hardy-folk
+  text: Your kingdom doesn't suffer the Resource Points penalty from Hunger level 1.
+
+- name: Hero's Welcome
+  identifier: heros-welcome
+  text: While you are within your kingdom's borders, party members have advantage on Charisma checks made to influence your kingdom's citizens.
+
+- name: Home Comforts
+  identifier: home-comforts
+  text: When a party member finishes a long rest in one of your kingdom's settlements, they gain temporary hit points equal to twice the kingdom's proficiency bonus.
+
+- name: Inspiring Entertainment
+  identifier: inspiring-entertainment
+  text: When you use Quell Unrest, you can make a Culture check instead of a Loyalty check. In addition, while your kingdom has 5 or more Unrest, you have a +2 bonus to Culture checks.
+
+- name: Kingdom Assurance
+  identifier: kingdom-assurance
+  repeatable: true
+  perk: { frequency: week }
+  text: Choose one ability score. Once per week, when you make a kingdom check using that ability, you can treat a d20 roll of 9 or lower as a 10. You can take this feat more than once, choosing a different ability each time.
+
+- name: Known Ground
+  identifier: known-ground
+  text: While you are within your kingdom's borders, party members have advantage on Wisdom (Survival) checks made to hunt, forage, or find their way.
+
+- name: Martial Tradition
+  identifier: martial-tradition
+  prerequisite: 6
+  text: When you found an army, roll a d4. That many of its unit slots, up to its total, start with Infantry instead of Militia.
+
+- name: Master Artisans
+  identifier: master-artisans
+  prerequisite: 12
+  text: Create a Masterpiece projects progress at twice the normal rate.
+
+- name: Open Door
+  identifier: open-door
+  text: The first petition day you miss in a row doesn't cost your kingdom any Unrest.
+
+- name: Pull Together
+  identifier: pull-together
+  perk: { frequency: week }
+  text: Once per week, when you roll a 1 on the d20 for a kingdom check, your citizens put in extra work to turn things around. You can reroll the die and must use the new roll.
+
+- name: Quick Recovery
+  identifier: quick-recovery
+  text: You have a +4 bonus to kingdom checks made to end an ongoing harmful event.
+
+- name: Rapid Muster
+  identifier: rapid-muster
+  text: Units you recruit are ready immediately instead of at the start of the next week.
+
+- name: Royal Treasury
+  identifier: royal-treasury
+  text: At the end of each week, if your kingdom has 100 RP or more unspent, it gains 1d10 RP in interest.
+
+- name: Safe Roads
+  identifier: safe-roads
+  text: The party's travel speed increases by 1 hex along roads your kingdom has built.
+
+- name: Shrewd Bookkeepers
+  identifier: shrewd-bookkeepers
+  perk: { frequency: week }
+  text: Once per week, you can reroll your entire Resource Points roll and must use the new result.
+
+- name: Spoils of War
+  identifier: spoils-of-war
+  text: When one of your armies wins a battle, your kingdom gains 5 RP for each enemy unit destroyed or routed.
+
+- name: Standing Army
+  identifier: standing-army
+  prerequisite: 6
+  text: Your kingdom's army limit increases by 1.
+
+- name: Thriving Economy
+  identifier: thriving-economy
+  prerequisite: 6
+  text: Your weekly Resource Points roll includes 2 additional d10s.
+
+- name: Trade Network
+  identifier: trade-network
+  prerequisite: 10
+  text: Each of your trade agreements adds 1 additional d10 to your weekly Resource Points roll.
+
+- name: Trusted Counsel
+  identifier: trusted-counsel
+  perk: { frequency: week }
+  text: Once per week, an advisor can reroll a failed check made to solve a petition.
+
+- name: Veteran Officers
+  identifier: veteran-officers
+  prerequisite: 8
+  text: You can appoint commanders with 3 traits.
+
+- name: Watchful Wardens
+  identifier: watchful-wardens
+  text: While the party is within your kingdom's borders, each party member has a +2 bonus to initiative rolls.

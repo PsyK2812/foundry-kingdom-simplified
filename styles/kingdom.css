@@ -1,0 +1,301 @@
+/* Kingdom Rules (Simplified) */
+
+.kingdom-simplified {
+  --ks-accent: #8a5a1f;
+  --ks-accent-soft: color-mix(in srgb, var(--ks-accent) 14%, transparent);
+  --ks-line: color-mix(in srgb, currentColor 18%, transparent);
+  --ks-faint: color-mix(in srgb, currentColor 6%, transparent);
+  --ks-alert: #b03a2e;
+  --ks-good: #2f7d3b;
+}
+.theme-dark .kingdom-simplified,
+.kingdom-simplified.theme-dark {
+  --ks-accent: #e0a85a;
+}
+
+.kingdom-simplified .window-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+.kingdom-simplified .hint {
+  font-size: var(--font-size-12, 12px);
+  opacity: 0.75;
+}
+
+/* Header */
+.kingdom-simplified .ks-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+}
+.kingdom-simplified .ks-portrait {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border: 1px solid var(--ks-line);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.kingdom-simplified .ks-portrait.small { width: 48px; height: 48px; }
+.kingdom-simplified .ks-title { flex: 1; display: flex; flex-direction: column; gap: 0.2rem; }
+.kingdom-simplified .ks-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  height: auto;
+  border: none;
+  background: transparent;
+}
+.kingdom-simplified .ks-name:hover,
+.kingdom-simplified .ks-name:focus { background: var(--ks-faint); }
+.kingdom-simplified .ks-subtitle { display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.85rem; opacity: 0.85; }
+.kingdom-simplified .ks-badge {
+  background: var(--ks-accent-soft);
+  color: var(--ks-accent);
+  border-radius: 3px;
+  padding: 0 0.4rem;
+  font-weight: 600;
+}
+.kingdom-simplified .ks-header-buttons { display: flex; gap: 0.4rem; }
+.kingdom-simplified button.ks-primary {
+  background: var(--ks-accent-soft);
+  border-color: var(--ks-accent);
+  font-weight: 600;
+}
+
+/* Tabs */
+.kingdom-simplified .ks-tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--ks-line);
+  flex: 0 0 auto;
+}
+.kingdom-simplified .ks-tab-link {
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  opacity: 0.75;
+}
+.kingdom-simplified .ks-tab-link.active {
+  opacity: 1;
+  font-weight: 600;
+  background: var(--ks-accent-soft);
+  box-shadow: inset 0 -2px 0 var(--ks-accent);
+}
+.kingdom-simplified section.ks-tab { display: none; flex: 1; overflow-y: auto; padding-right: 0.25rem; }
+.kingdom-simplified section.ks-tab.active { display: block; }
+.kingdom-simplified section.ks-tab h3 { margin: 0.75rem 0 0.25rem; border-bottom: 1px solid var(--ks-line); }
+
+/* Abilities */
+.kingdom-simplified .ks-abilities {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.kingdom-simplified .ks-ability {
+  display: grid;
+  grid-template-areas: "label label" "mod score" "adv adv";
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  height: auto;
+  padding: 0.5rem 0.6rem;
+  text-align: left;
+  border: 1px solid var(--ks-line);
+  border-radius: 6px;
+  background: var(--ks-faint);
+  line-height: 1.2;
+}
+.kingdom-simplified .ks-ability:hover { border-color: var(--ks-accent); }
+.kingdom-simplified .ks-ability-label { grid-area: label; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+.kingdom-simplified .ks-ability-mod { grid-area: mod; font-size: 1.8rem; font-weight: 700; }
+.kingdom-simplified .ks-ability-score { grid-area: score; font-size: 0.9rem; opacity: 0.7; border: 1px solid var(--ks-line); border-radius: 50%; padding: 0.15rem 0.4rem; }
+.kingdom-simplified .ks-ability-advisors { grid-area: adv; font-size: 0.7rem; opacity: 0.65; }
+
+/* Stats */
+.kingdom-simplified .ks-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.kingdom-simplified .ks-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--ks-line);
+  border-radius: 6px;
+}
+.kingdom-simplified .ks-stat label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.8; }
+.kingdom-simplified .ks-stat input[type=number] { font-size: 1.2rem; font-weight: 600; width: 5em; }
+.kingdom-simplified .ks-stat small { font-size: 0.75rem; opacity: 0.75; }
+.kingdom-simplified .ks-stat-row { display: flex; align-items: center; gap: 0.4rem; }
+.kingdom-simplified .ks-food { display: flex; flex-direction: column; font-size: 0.8rem; }
+.kingdom-simplified .ks-alert { border-color: var(--ks-alert) !important; }
+.kingdom-simplified .ks-stat.ks-alert label,
+.kingdom-simplified .ks-alert strong { color: var(--ks-alert); }
+.kingdom-simplified .ks-warning { color: var(--ks-alert); font-size: 0.85rem; }
+.kingdom-simplified .ks-error { color: var(--ks-alert); font-weight: 600; }
+.kingdom-simplified .ks-notice {
+  background: var(--ks-accent-soft);
+  border-left: 3px solid var(--ks-accent);
+  padding: 0.3rem 0.5rem;
+}
+
+.kingdom-simplified .ks-button-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
+.kingdom-simplified .ks-button-row button { flex: 0 1 auto; width: auto; }
+.kingdom-simplified .ks-actions { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.kingdom-simplified .ks-actions li { display: flex; align-items: center; gap: 0.5rem; }
+.kingdom-simplified .ks-actions button { flex: 0 0 15rem; }
+
+/* Tables */
+.kingdom-simplified .ks-table { width: 100%; border-collapse: collapse; margin: 0.25rem 0; }
+.kingdom-simplified .ks-table th { text-align: left; font-size: 0.75rem; text-transform: uppercase; opacity: 0.75; }
+.kingdom-simplified .ks-table td, .kingdom-simplified .ks-table th { padding: 0.25rem; border-bottom: 1px solid var(--ks-line); vertical-align: middle; }
+.kingdom-simplified .ks-advisors tr.ks-vacant td:first-child { color: var(--ks-alert); }
+.kingdom-simplified .ks-advisors { table-layout: fixed; }
+.kingdom-simplified .ks-advisors td { height: 3.25rem; }
+.kingdom-simplified .ks-advisors .ks-col-role { width: 22%; }
+.kingdom-simplified .ks-advisors .ks-col-small { width: 4.5rem; }
+.kingdom-simplified .ks-advisors .ks-center { text-align: center; }
+.kingdom-simplified .ks-advisors td.ks-center input[type=checkbox] { margin: 0 auto; }
+.kingdom-simplified .ks-advisors td.ks-center button { width: 2.5rem; margin: 0 auto; }
+.kingdom-simplified .ks-advisor-slot { display: flex; align-items: center; gap: 0.4rem; min-height: 2rem; }
+.kingdom-simplified .ks-advisor-slot input[type=text] { flex: 1; }
+.kingdom-simplified .ks-linked { display: flex; align-items: center; gap: 0.4rem; font-weight: 600; flex: 1; }
+.kingdom-simplified .ks-linked img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: none; }
+.kingdom-simplified .ks-short { width: 4.5em !important; flex: 0 0 4.5em !important; }
+
+/* Settlements */
+.kingdom-simplified .ks-section-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+.kingdom-simplified .ks-section-head span { flex: 1; }
+.kingdom-simplified .ks-section-head button { flex: 0 0 auto; width: auto; }
+.kingdom-simplified .ks-settlement {
+  border: 1px solid var(--ks-line);
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+.kingdom-simplified .ks-settlement.ks-capital { border-color: var(--ks-accent); }
+.kingdom-simplified .ks-settlement-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.kingdom-simplified .ks-settlement-head input[type=text] { flex: 1 1 10rem; font-weight: 600; }
+.kingdom-simplified .ks-settlement-head select { flex: 0 0 8rem; }
+.kingdom-simplified .ks-settlement-head label { display: flex; align-items: center; gap: 0.2rem; font-size: 0.85rem; white-space: nowrap; }
+.kingdom-simplified .ks-slots { font-weight: 600; padding: 0 0.4rem; border: 1px solid var(--ks-line); border-radius: 3px; }
+.kingdom-simplified .ks-food-small { font-size: 0.85rem; opacity: 0.8; }
+.kingdom-simplified .ks-buildings { list-style: none; padding: 0; margin: 0.4rem 0 0; }
+.kingdom-simplified .ks-building {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.25rem;
+  border-bottom: 1px dashed var(--ks-line);
+}
+.kingdom-simplified .ks-building img { width: 24px; height: 24px; border: none; }
+.kingdom-simplified .ks-building-name { flex: 1; font-weight: 600; cursor: pointer; }
+.kingdom-simplified .ks-tags { display: flex; gap: 0.3rem; font-size: 0.75rem; }
+.kingdom-simplified .ks-tags span { background: var(--ks-faint); border-radius: 3px; padding: 0 0.3rem; }
+.kingdom-simplified .ks-inline { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.85rem; }
+.kingdom-simplified .ks-inline input[type=number] { width: 3.5em; }
+.kingdom-simplified .ks-building button { flex: 0 0 auto; width: auto; height: auto; padding: 0 0.4rem; font-size: 0.8rem; }
+.kingdom-simplified .ks-perk { display: inline-flex; align-items: center; gap: 0.2rem; font-size: 0.8rem; }
+.kingdom-simplified .ks-perk.used { opacity: 0.55; text-decoration: line-through; }
+.kingdom-simplified .ks-drop-hint {
+  margin-top: 0.4rem;
+  padding: 0.3rem;
+  font-size: 0.8rem;
+  text-align: center;
+  border: 1px dashed var(--ks-line);
+  border-radius: 4px;
+  opacity: 0.75;
+}
+
+/* Projects */
+.kingdom-simplified .ks-projects { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.kingdom-simplified .ks-project { border: 1px solid var(--ks-line); border-radius: 6px; padding: 0.4rem 0.5rem; }
+.kingdom-simplified .ks-project.ks-focus { border-color: var(--ks-accent); background: var(--ks-accent-soft); }
+.kingdom-simplified .ks-project-head { display: flex; align-items: center; gap: 0.5rem; }
+.kingdom-simplified .ks-project-head .hint { margin-left: auto; }
+.kingdom-simplified .ks-progress { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.3rem; font-size: 0.85rem; }
+.kingdom-simplified .ks-progress input[type=number] { width: 3.2em; }
+.kingdom-simplified .ks-progress-bar { flex: 1; height: 8px; background: var(--ks-faint); border-radius: 4px; overflow: hidden; }
+.kingdom-simplified .ks-progress-bar span { display: block; height: 100%; background: var(--ks-accent); }
+
+/* Kingdom tab */
+.kingdom-simplified .ks-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.kingdom-simplified fieldset { border: 1px solid var(--ks-line); border-radius: 6px; margin: 0 0 0.6rem; padding: 0.4rem 0.6rem; }
+.kingdom-simplified fieldset legend { font-weight: 600; padding: 0 0.3rem; }
+.kingdom-simplified .form-group { display: flex; align-items: center; gap: 0.4rem; margin: 0.25rem 0; flex-wrap: wrap; }
+.kingdom-simplified .form-group > label { flex: 0 0 11rem; font-size: 0.85rem; }
+.kingdom-simplified .form-group > input[type=text],
+.kingdom-simplified .form-group > select { flex: 1; }
+.kingdom-simplified .form-group.stacked { flex-direction: column; align-items: stretch; }
+.kingdom-simplified .form-group.stacked > label { flex: none; }
+.kingdom-simplified .ks-feats { list-style: none; padding: 0; margin: 0; }
+.kingdom-simplified .ks-feats li { display: flex; align-items: center; gap: 0.4rem; padding: 0.15rem 0; border-bottom: 1px dashed var(--ks-line); }
+.kingdom-simplified .ks-feats li > a:first-of-type { flex: 1; cursor: pointer; }
+.kingdom-simplified .ks-feats img { width: 22px; height: 22px; border: none; }
+.kingdom-simplified .ks-feats select { flex: 0 0 7rem; }
+.kingdom-simplified .ks-log { list-style: none; padding: 0; margin: 0; max-height: 14rem; overflow-y: auto; font-size: 0.85rem; }
+.kingdom-simplified .ks-log li { padding: 0.15rem 0; border-bottom: 1px dashed var(--ks-line); }
+.kingdom-simplified .ks-log-week { display: inline-block; min-width: 2.5rem; font-weight: 600; opacity: 0.7; }
+.kingdom-simplified textarea { width: 100%; resize: vertical; }
+
+/* Item sheet */
+.kingdom-simplified.ks-item-sheet .ks-description { padding: 0.5rem 0; }
+.kingdom-simplified.ks-item-sheet details { border-top: 1px solid var(--ks-line); padding-top: 0.4rem; }
+.kingdom-simplified.ks-item-sheet summary { cursor: pointer; font-weight: 600; }
+.kingdom-simplified .ks-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 0.2rem; }
+
+/* Turn wizard */
+.ks-turn-wizard .ks-wizard { display: flex; flex-direction: column; gap: 0.6rem; }
+.ks-turn-wizard .ks-steps { display: flex; flex-wrap: wrap; gap: 0.3rem; list-style: none; padding: 0; margin: 0; font-size: 0.75rem; }
+.ks-turn-wizard .ks-steps li { padding: 0.15rem 0.45rem; border: 1px solid var(--ks-line); border-radius: 10px; opacity: 0.6; }
+.ks-turn-wizard .ks-steps li.done { opacity: 0.85; text-decoration: line-through; }
+.ks-turn-wizard .ks-steps li.active { opacity: 1; border-color: var(--ks-accent); background: var(--ks-accent-soft); font-weight: 600; }
+.ks-turn-wizard .ks-step-body { min-height: 8rem; }
+.ks-turn-wizard .ks-choice { display: flex; gap: 0.5rem; margin: 0.4rem 0; }
+.ks-turn-wizard .ks-choice button.active { border-color: var(--ks-accent); background: var(--ks-accent-soft); font-weight: 600; }
+.ks-turn-wizard .ks-breakdown { list-style: none; padding: 0; margin: 0.3rem 0; }
+.ks-turn-wizard .ks-breakdown li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--ks-line); padding: 0.1rem 0; }
+.ks-turn-wizard .ks-breakdown li.total { font-weight: 700; border-bottom: none; }
+.ks-turn-wizard .ks-result { border: 1px solid var(--ks-line); border-radius: 6px; padding: 0.4rem 0.6rem; margin-top: 0.4rem; }
+.ks-turn-wizard .ks-one { color: var(--ks-alert); font-weight: 700; }
+.ks-turn-wizard .ks-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.ks-turn-wizard .ks-columns h4 { margin: 0; }
+.ks-turn-wizard .ks-summary { font-size: 0.85rem; }
+.ks-turn-wizard .ks-wizard-footer { display: flex; justify-content: flex-end; }
+.ks-turn-wizard .ks-wizard-footer button { width: auto; }
+
+/* Dialogs */
+.ks-check-dialog .form-group,
+.ks-project-dialog .form-group { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin: 0.3rem 0; }
+.ks-check-dialog .form-group > label,
+.ks-project-dialog .form-group > label { flex: 0 0 11rem; }
+.ks-check-dialog .form-group .hint { flex: 1 0 100%; margin: 0; }
+.ks-cost-preview { margin-top: 0.5rem; }
+.ks-cost-preview .ks-warning, .ks-cost-preview .ks-error { color: #b03a2e; margin: 0.2rem 0; }
+
+/* Chat */
+.ks-chat h3 { margin: 0 0 0.2rem; font-size: 1rem; }
+.ks-chat .ks-dc { margin: 0.1rem 0; }
+.ks-chat .ks-success { color: #2f7d3b; }
+.ks-chat .ks-failure { color: #b03a2e; }
+.ks-chat .ks-parts, .ks-chat .ks-notes { font-size: 0.8rem; opacity: 0.8; margin: 0.1rem 0; }
+.ks-chat .ks-rerolls { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.3rem; }
+
+.kingdom-simplified .form-group.ks-indent > label { padding-left: 1rem; opacity: 0.85; }
+
+/* Agreements */
+.kingdom-simplified .ks-agreement { border: 1px solid var(--ks-line); border-radius: 6px; padding: 0.4rem 0.5rem; margin-bottom: 0.4rem; }
+.kingdom-simplified .ks-agreement.repaid { opacity: 0.6; }
+.kingdom-simplified .ks-agreement-head { display: flex; align-items: center; gap: 0.5rem; }
+.kingdom-simplified .ks-agreement-head > a:first-of-type { flex: 1; cursor: pointer; }
+.kingdom-simplified .ks-agreement-head img { width: 24px; height: 24px; border: none; }
+.kingdom-simplified .ks-agreement-due { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.3rem; font-size: 0.85rem; }
+.kingdom-simplified .ks-agreement-due span { flex: 1; }
+.kingdom-simplified .ks-agreement-due button { flex: 0 0 auto; width: auto; }

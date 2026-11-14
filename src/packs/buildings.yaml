@@ -1,0 +1,722 @@
+# Kingdom buildings, transcribed from "Kingdom Rules (Simplified)".
+# Fields left out default to 0 / false / none.
+# perk = a limited-use party benefit shown with a "used" checkbox on the sheet.
+
+- name: Brewery
+  identifier: brewery
+  level: 1
+  slots: 1
+  cost: 40
+  rpDice: 1
+  perk: { frequency: week, label: Free drinks before Quell Unrest }
+  text:
+    - Each Brewery in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - Once per week, before you make a Quell Unrest check, you can spend 5 RP plus 5 RP per kingdom level to throw a round of free drinks for your citizens. You have advantage on that check.
+
+- name: Cemetery
+  identifier: cemetery
+  level: 1
+  slots: 1
+  cost: 10
+  text:
+    - A disease or plague event that starts in a settlement with a Cemetery can't spread to your other settlements.
+
+- name: General Store
+  identifier: general-store
+  level: 1
+  slots: 1
+  cost: 40
+  rpDice: 1
+  text:
+    - Each General Store in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - While you are in a settlement with a General Store, party members can sell mundane items and gear at full value instead of half.
+
+- name: Granary
+  identifier: granary
+  level: 1
+  slots: 1
+  cost: 20
+  text:
+    - Once every 4 weeks, when your Food supplies would drop below 0, you can open the Granary. That week, your Food supplies count as 0 instead.
+
+- name: Herbalist
+  identifier: herbalist
+  level: 1
+  slots: 1
+  cost: 40
+  rpDice: 1
+  perk: { frequency: week, label: Free healing salves }
+  text:
+    - Each Herbalist in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - Once per week, while you are in a settlement with a Herbalist, each party member can take one healing salve from the Herbalist for free.
+
+- name: Inn
+  identifier: inn
+  level: 1
+  slots: 1
+  cost: 40
+  rpDice: 1
+  text:
+    - Each Inn in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - Once per week, you can spend 20 RP to hire adventurers at an Inn to deal with a minor problem in your kingdom, such as a small monster threat. The DM decides the outcome.
+
+- name: Shrine
+  identifier: shrine
+  level: 1
+  slots: 1
+  cost: 10
+  perk: { frequency: week, label: Priest's blessing }
+  text:
+    - Once per week, while you are in a settlement with a Shrine, a party member can receive the priest's blessing. Before the next week begins, they can add a d4 to one attack roll or saving throw.
+
+- name: Tavern
+  identifier: tavern
+  level: 1
+  slots: 1
+  cost: 10
+  unrestFirstBuild: -1
+  perk: { frequency: week, label: Listen for rumors }
+  text:
+    - The first time your kingdom builds a Tavern, your kingdom's Unrest decreases by 1.
+    - Once per week, while you are in a settlement with a Tavern, the party can listen in on the locals, and the DM shares one rumor about the surrounding lands.
+
+- name: Wooden Wall
+  identifier: wooden-wall
+  level: 1
+  slots: 0
+  cost: 20
+  text:
+    - Your units fighting within a settlement with a Wooden Wall have a +1 bonus to AC.
+    - A settlement can't have both walls. Building a Stone Wall replaces its Wooden Wall.
+
+- name: Jail
+  identifier: jail
+  level: 2
+  slots: 1
+  cost: 20
+  perk: { frequency: week, label: Question prisoners }
+  text:
+    - While your kingdom has a Jail, you have a +2 bonus to checks made to resolve crime, riot, and rebellion events.
+    - Once per week, while you are in a settlement with a Jail, the party can question its prisoners, and the DM shares one useful piece of information about local threats or criminals.
+
+- name: Library
+  identifier: library
+  level: 2
+  slots: 1
+  cost: 40
+  discounts: [claimTerritory]
+  perk: { frequency: week, label: Borrow a book }
+  text:
+    - While your kingdom has a Library, Claim Territory projects cost 20% less RP.
+    - Once per week, while you are in a settlement with a Library, a party member can borrow a book and gain proficiency in one skill (Arcana, History, Medicine, Nature, or Religion) until the next week begins.
+
+- name: Market Square
+  identifier: market-square
+  level: 2
+  slots: 1
+  cost: 40
+  rpDice: 1
+  text:
+    - Each Market Square in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - Once every 4 weeks, you can host a trade fair at the Market Square. Your next Resource Points roll includes 1 additional d10 for each trade agreement your kingdom has.
+
+- name: Mill
+  identifier: mill
+  level: 2
+  slots: 1
+  cost: 30
+  food: 1
+  requires: { river: true }
+  perk: { frequency: week, label: Free rations }
+  text:
+    - Each Mill in your kingdom produces 1 Food each week.
+    - Once per week, while you are in a settlement with a Mill, each party member can take 7 days of rations for free.
+    - A Mill can only be built in a settlement beside a river or lake.
+
+- name: Orphanage
+  identifier: orphanage
+  level: 2
+  slots: 1
+  cost: 30
+  text:
+    - While your kingdom has an Orphanage, you have a +2 bonus to checks made to resolve events involving refugees or the homeless.
+    - While your kingdom has an Orphanage, your soldiers know their children will be cared for if they fall. Your armies' units have a +1 bonus to Morale saving throws.
+
+- name: Town Hall
+  identifier: town-hall
+  level: 2
+  slots: 2
+  cost: 30
+  unrestFirstBuild: -1
+  text:
+    - The first time your kingdom builds a Town Hall, your kingdom's Unrest decreases by 1.
+    - While your capital has a Town Hall, a local deputy can fill one vacant advisor role. That role doesn't count as vacant, but the deputy has disadvantage on their checks.
+
+- name: Alchemy Laboratory
+  identifier: alchemy-laboratory
+  level: 3
+  slots: 1
+  cost: 80
+  perk: { frequency: week, label: Free alchemical item }
+  text:
+    - "Once per week, while you are in a settlement with an Alchemy Laboratory, each party member can take one of the following from the laboratory for free: a common potion, a vial of alchemist's fire, a vial of acid, or a vial of antitoxin."
+
+- name: Barracks
+  identifier: barracks
+  level: 3
+  slots: 1
+  cost: 40
+  text:
+    - While your kingdom has Barracks, recruiting units costs 20% less RP.
+
+- name: Festival Hall
+  identifier: festival-hall
+  level: 3
+  slots: 1
+  cost: 40
+  rpDice: 1
+  text:
+    - Each Festival Hall in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - The first time each week your kingdom would gain Unrest from an event, reduce that Unrest by 1.
+
+- name: Foundry
+  identifier: foundry
+  level: 3
+  slots: 2
+  cost: 80
+  rpDice: 1
+  discounts: [masterpieceArms]
+  text:
+    - Each Foundry in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - While your kingdom has a Foundry, Create a Masterpiece projects for weapons and armor cost 20% less RP.
+    - While your kingdom has a Foundry, you can recruit Siege Engines.
+
+- name: Hunting Lodge
+  identifier: hunting-lodge
+  level: 3
+  slots: 1
+  cost: 30
+  food: 1
+  perk: { frequency: week, label: Hire a guide }
+  text:
+    - Each Hunting Lodge in your kingdom produces 1 Food each week.
+    - While your kingdom has a Hunting Lodge, you can recruit Archers.
+    - Once per week, while you are in a settlement with a Hunting Lodge, the party can hire one of its hunters as a guide. On one day of travel before the next week begins, the party can travel 1 additional hex through unexplored hexes.
+
+- name: Keep
+  identifier: keep
+  level: 3
+  slots: 2
+  cost: 30
+  text:
+    - While your kingdom has a Keep, you have a +2 bonus to checks made to resolve raid, siege, and monster attack events.
+    - Once per week, while your kingdom has a Keep, you can reroll a failed Stability check and must use the new roll.
+
+- name: Lumberyard
+  identifier: lumberyard
+  level: 3
+  slots: 2
+  cost: 80
+  rpDice: 1
+  discounts: [buildRoad]
+  requires: { river: true }
+  text:
+    - Each Lumberyard in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - While your kingdom has a Lumberyard, Build Road projects cost 20% less RP.
+    - A Lumberyard can only be built in a settlement beside a river or lake.
+
+- name: Monument
+  identifier: monument
+  level: 3
+  slots: 1
+  cost: 60
+  perk: { frequency: week, label: Inspiration }
+  text:
+    - Once per week, a party member who spends an hour at a Monument gains Inspiration.
+
+- name: Park
+  identifier: park
+  level: 3
+  slots: 1
+  cost: 10
+  perk: { frequency: week, label: Temporary hit points }
+  text:
+    - Once per week, a party member who spends an hour in a Park gains temporary hit points equal to twice their proficiency bonus, which last until their next long rest.
+
+- name: Pier
+  identifier: pier
+  level: 3
+  slots: 1
+  cost: 50
+  rpDice: 1
+  food: 1
+  requires: { river: true }
+  text:
+    - Each Pier in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - Each Pier in your kingdom produces 1 Food each week.
+    - A Pier can only be built in a settlement beside a river or lake.
+
+- name: Smithy
+  identifier: smithy
+  level: 3
+  slots: 1
+  cost: 60
+  rpDice: 1
+  text:
+    - Each Smithy in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - Each Lumberyard, Mine, and Stonemason in the same settlement as a Smithy adds 1 additional d10 to your weekly Resource Points roll.
+
+- name: Stable
+  identifier: stable
+  level: 3
+  slots: 1
+  cost: 20
+  text:
+    - While your kingdom has a Stable, you can recruit Cavalry.
+    - While you are in a settlement with a Stable, the party can borrow riding horses for free and buy mounts for 20% less.
+
+- name: Stockyard
+  identifier: stockyard
+  level: 3
+  slots: 2
+  cost: 40
+  food: 2
+  text:
+    - Each Stockyard in your kingdom produces 2 Food each week.
+    - Once every 4 weeks, you can slaughter extra livestock. The Stockyard produces 4 additional Food that week, but none the following week.
+
+- name: Stonemason
+  identifier: stonemason
+  level: 3
+  slots: 2
+  cost: 80
+  rpDice: 1
+  discounts: [expandSettlement]
+  text:
+    - Each Stonemason in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - While your kingdom has a Stonemason, Expand Settlement projects cost 20% less RP.
+
+- name: Tannery
+  identifier: tannery
+  level: 3
+  slots: 1
+  cost: 30
+  rpDice: 1
+  unrestOnBuild: 1
+  text:
+    - When you build a Tannery, its stench causes your kingdom to gain 1 Unrest.
+    - Each Tannery in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - When the party brings the hide of a creature of challenge rating 3 or higher to a Tannery, your kingdom gains RP equal to the creature's challenge rating.
+
+- name: Watchtower
+  identifier: watchtower
+  level: 3
+  slots: 1
+  cost: 20
+  text:
+    - You have a +1 bonus to kingdom checks made to resolve events affecting a settlement with a Watchtower.
+    - In battles fought within a settlement with a Watchtower, your side has advantage on its initiative roll.
+    - While your kingdom has a Watchtower, you can recruit Skirmishers.
+
+- name: Bathhouse
+  identifier: bathhouse
+  level: 4
+  slots: 1
+  cost: 40
+  perk: { frequency: week, label: Remove one level of exhaustion }
+  text:
+    - Once per week, while your kingdom has a Bathhouse, you can make one Loyalty check with advantage. You must decide before you roll.
+    - Once per week, a party member who spends an hour in a Bathhouse removes one level of exhaustion.
+
+- name: Mine
+  identifier: mine
+  level: 4
+  slots: 2
+  cost: 60
+  rpDice: 2
+  requires: { hills: true }
+  text:
+    - Each Mine in your kingdom adds 2d10 to your weekly Resource Points roll.
+    - A Mine can only be built in a settlement next to a hills or mountains hex.
+
+- name: Paved Streets
+  identifier: paved-streets
+  level: 4
+  slots: 0
+  cost: 60
+  slotBonus: 2
+  text:
+    - A settlement with Paved Streets has 2 additional building slots.
+
+- name: Arcanist's Tower
+  identifier: arcanists-tower
+  level: 5
+  slots: 1
+  cost: 30
+  text:
+    - While your kingdom has an Arcanist's Tower, you can recruit Battle Mages.
+    - While you are in a settlement with an Arcanist's Tower, the party can take any spell material component worth 50 gp or less from the tower for free.
+
+- name: Bank
+  identifier: bank
+  level: 5
+  slots: 1
+  cost: 30
+  text:
+    - While your kingdom has a Bank, the party can convert gold into RP at a rate of 20 gp per 1 RP instead of 25 gp.
+    - You can take out a loan of up to 50 RP from the Bank. You must repay the loan plus 20% interest within 4 weeks, and your kingdom gains 1 Unrest for each week the loan is overdue. You can have only one loan at a time.
+
+- name: Garrison
+  identifier: garrison
+  level: 5
+  slots: 2
+  cost: 30
+  text:
+    - While your kingdom has a Garrison, your armies' upkeep costs 20% less RP.
+    - While your kingdom has a Garrison, you can recruit Heavy Infantry.
+
+- name: Guildhall
+  identifier: guildhall
+  level: 5
+  slots: 2
+  cost: 80
+  rpDice: 1
+  text:
+    - Each Guildhall in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - Each week, you can reroll any d10s that roll a 1 on your Resource Points roll, up to a number of dice equal to your kingdom's proficiency bonus, and you must use the new results.
+
+- name: Magical Streetlamps
+  identifier: magical-streetlamps
+  level: 5
+  slots: 0
+  cost: 30
+  unrestFirstBuild: -1
+  text:
+    - The first time your kingdom builds Magical Streetlamps, your kingdom's Unrest decreases by 1.
+    - While you are in a settlement with Magical Streetlamps, the streets are lit all night, and party members have advantage on Wisdom (Perception) checks made there after dark.
+
+- name: Mansion
+  identifier: mansion
+  level: 5
+  slots: 1
+  cost: 40
+  text:
+    - Once every 4 weeks, the family can cover up to 50 RP of a project's cost. The common folk resent the nobles buying influence, and your kingdom gains 2 Unrest.
+
+- name: Museum
+  identifier: museum
+  level: 5
+  slots: 2
+  cost: 40
+  text:
+    - Once per week, while your kingdom has a Museum, you can reroll a failed Culture check and must use the new roll.
+    - Each time the party donates an uncommon or rarer magic item of historical or regional importance (DM's call) to a Museum, your kingdom's Unrest decreases by 1. If that item is later taken off display, your kingdom gains 1 Unrest.
+
+- name: Sacred Grove
+  identifier: sacred-grove
+  level: 5
+  slots: 1
+  cost: 30
+  discounts: [establishFarmland]
+  perk: { frequency: week, label: Lesser restoration }
+  text:
+    - While your kingdom has a Sacred Grove, Establish Farmland projects cost 20% less RP.
+    - Once per week, while you are in a settlement with a Sacred Grove, the grove's druids can cast <em>lesser restoration</em> on a party member for free.
+
+- name: Stone Wall
+  identifier: stone-wall
+  level: 5
+  slots: 0
+  cost: 40
+  text:
+    - Your units fighting within a settlement with a Stone Wall have a +2 bonus to AC.
+
+- name: Thieves' Guild
+  identifier: thieves-guild
+  level: 5
+  slots: 1
+  cost: 30
+  unrestOnBuild: 1
+  discounts: [infiltration]
+  text:
+    - When you build a Thieves' Guild, crime rises, and your kingdom gains 1 Unrest.
+    - While your kingdom has a Thieves' Guild, Infiltration projects cost 20% less RP.
+    - While you are in a settlement with a Thieves' Guild, the guild can forge documents, seals, and letters for the party for free.
+
+- name: Academy
+  identifier: academy
+  level: 6
+  slots: 2
+  cost: 60
+  discounts: [research]
+  text:
+    - While your kingdom has an Academy, Research projects cost 20% less RP.
+    - While you are in a settlement with an Academy, party members have a +2 bonus to ability checks made to research a topic.
+
+- name: Black Market
+  identifier: black-market
+  level: 6
+  slots: 1
+  cost: 80
+  text:
+    - Once per week, you can take a cut of the black market and gain 3d10 RP, but your kingdom gains 2 Unrest.
+    - While you are in a settlement with a Black Market, party members can buy and sell restricted or stolen goods there with no questions asked.
+
+- name: Construction Yard
+  identifier: construction-yard
+  level: 6
+  slots: 4
+  cost: 80
+  discounts: [buildStructure]
+  text:
+    - While your kingdom has a Construction Yard, Build Structure projects cost 20% less RP.
+
+- name: Luxury Store
+  identifier: luxury-store
+  level: 6
+  slots: 1
+  cost: 60
+  rpDice: 1
+  text:
+    - Each Luxury Store in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - While you are in a settlement with a Luxury Store, party members can sell art objects, gems, and jewelry for 20% more.
+
+- name: Orchard
+  identifier: orchard
+  level: 6
+  slots: 2
+  cost: 60
+  text:
+    - Each Farmland hex next to a settlement with an Orchard produces 1 additional Food each week, up to 3 additional Food per Orchard.
+
+- name: Aqueduct
+  identifier: aqueduct
+  level: 7
+  slots: 0
+  cost: 40
+  text:
+    - While your kingdom has an Aqueduct, you have a +2 bonus to kingdom checks made to resolve drought and fire events.
+    - A settlement with an Aqueduct counts as being beside a river or lake for the purpose of building a Mill.
+
+- name: Military Academy
+  identifier: military-academy
+  level: 7
+  slots: 2
+  cost: 80
+  perk: { frequency: week, label: Learn a maneuver }
+  text:
+    - While your kingdom has a Military Academy, you can appoint commanders with 2 traits.
+    - Once per week, while you are in a settlement with a Military Academy, a party member can train with the instructors and learn one Battle Master maneuver of their choice. Until the next week begins, they can use it once, with a d8 superiority die.
+
+- name: Sewer System
+  identifier: sewer-system
+  level: 7
+  slots: 0
+  cost: 30
+  text:
+    - While your kingdom has a Sewer System, you have a +2 bonus to checks made to resolve disease and plague events.
+
+- name: Embassy
+  identifier: embassy
+  level: 8
+  slots: 2
+  cost: 30
+  discounts: [sendEnvoy]
+  text:
+    - While your kingdom has an Embassy, Send Envoy projects cost 20% less RP.
+    - While you are in a settlement with an Embassy, party members have advantage on Charisma checks made to negotiate with foreign diplomats.
+
+- name: Magic Shop
+  identifier: magic-shop
+  level: 8
+  slots: 1
+  cost: 60
+  rpDice: 1
+  perk: { frequency: week, label: Restore 1 charge }
+  text:
+    - Each Magic Shop in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - Once per week, while you are in a settlement with a Magic Shop, a party member can have the shop restore 1 charge to a magic item that uses charges.
+
+- name: Waterfront
+  identifier: waterfront
+  level: 8
+  slots: 4
+  cost: 150
+  rpDice: 2
+  food: 1
+  requires: { river: true }
+  text:
+    - Each Waterfront in your kingdom adds 2d10 to your weekly Resource Points roll.
+    - Each Waterfront in your kingdom produces 1 Food each week.
+    - "<strong>River Passage.</strong> Boats and barges travel freely from the Waterfront. The river or lake it is built on counts as a road for the party's travel."
+    - A Waterfront can only be built in a settlement beside a river or lake.
+
+- name: Arena
+  identifier: arena
+  level: 9
+  slots: 4
+  cost: 80
+  text:
+    - Once every 4 weeks, you can host a tournament in the Arena. Your kingdom's Unrest decreases by 1, and your next Resource Points roll includes 4 extra d10s.
+    - While your kingdom has an Arena, you have a +1 bonus to Quell Unrest checks.
+
+- name: Castle
+  identifier: castle
+  level: 9
+  slots: 4
+  cost: 200
+  unrestFirstBuild: -1
+  text:
+    - The first time your kingdom builds a Castle, your kingdom's Unrest decreases by 1.
+    - While your capital has a Castle, you can choose two focus projects each week instead of one.
+
+- name: Hospital
+  identifier: hospital
+  level: 9
+  slots: 2
+  cost: 60
+  text:
+    - While your kingdom has a Hospital, the Unrest it gains from a disease or plague event is capped at 2 per week.
+    - While your kingdom has a Hospital, you can recruit Field Medics.
+
+- name: Temple
+  identifier: temple
+  level: 9
+  slots: 2
+  cost: 60
+  unrestFirstBuild: -1
+  text:
+    - The first time your kingdom builds a Temple, your kingdom's Unrest decreases by 1.
+    - While you are in a settlement with a Temple, its priests can cast <em>raise dead</em> for the party. The party provides only the spell's material component.
+
+- name: Arcane Forge
+  identifier: arcane-forge
+  level: 10
+  slots: 2
+  cost: 120
+  discounts: [masterpieceMagic]
+  perk: { frequency: week, label: Enchant weapon or armor }
+  text:
+    - While your kingdom has an Arcane Forge, Create a Masterpiece projects for magic items other than weapons and armor cost 20% less RP.
+    - Once per week, while you are in a settlement with an Arcane Forge, its enchanters can enchant a party member's weapon or armor. Until the next week begins, the item counts as magical and grants a +1 bonus to attack rolls (weapon) or AC (armor).
+
+- name: Fey Circle
+  identifier: fey-circle
+  level: 11
+  slots: 1
+  cost: 80
+  perk: { frequency: week, label: Fey blessing }
+  text:
+    - While your kingdom has a Fey Circle, you have a +2 bonus to kingdom checks made to resolve events involving fey or the First World.
+    - Once per week, while you are in a settlement with a Fey Circle, a party member can receive a blessing from the fey who dance there. Until the next week begins, they have advantage on saving throws against being charmed or frightened.
+
+- name: Menagerie
+  identifier: menagerie
+  level: 12
+  slots: 4
+  cost: 120
+  text:
+    - Each creature on display in a Menagerie earns 5 RP per week from visitors, up to 4 creatures.
+    - When the party captures a living creature of challenge rating 5 or higher and brings it to a Menagerie, the creature joins the exhibit and your kingdom gains 1 Renown. A creature with an Intelligence of 4 or higher can't be displayed without causing 1 Unrest each week.
+
+- name: Theater
+  identifier: theater
+  level: 12
+  slots: 2
+  cost: 60
+  rpDice: 1
+  text:
+    - Each Theater in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - While your kingdom has a Theater, its playwrights spread your kingdom's legend. The first time each week your kingdom earns Renown, it earns 1 additional Renown.
+
+- name: Occult Shop
+  identifier: occult-shop
+  level: 13
+  slots: 1
+  cost: 100
+  rpDice: 1
+  perk: { frequency: week, label: Fortune reading }
+  text:
+    - Each Occult Shop in your kingdom adds 1d10 to your weekly Resource Points roll.
+    - Once per week, while you are in a settlement with an Occult Shop, a party member can have their fortune read and roll a d20. Before the next week begins, they can replace any one d20 roll with that result.
+
+- name: Teleportation Circle
+  identifier: teleportation-circle
+  level: 13
+  slots: 1
+  cost: 200
+  text:
+    - You can travel instantly from a settlement with a Teleportation Circle to any other settlement with one.
+
+- name: Cathedral
+  identifier: cathedral
+  level: 15
+  slots: 4
+  cost: 160
+  ability: { key: stability, value: 2 }
+  perk: { frequency: week, label: Augury or divination }
+  text:
+    - While your kingdom has a Cathedral, its Stability score increases by 2.
+    - Once per week, you can collect tithes from your citizens and gain 20 RP, but your kingdom gains 1 Unrest.
+    - Once per week, while you are in a settlement with a Cathedral, a priest casts <em>augury</em> or <em>divination</em> for the party for free.
+
+- name: Grand Tavern
+  identifier: grand-tavern
+  level: 15
+  slots: 2
+  cost: 160
+  rpDice: 2
+  ability: { key: loyalty, value: 2 }
+  text:
+    - While your kingdom has a Grand Tavern, its Loyalty score increases by 2.
+    - Each Grand Tavern in your kingdom adds 2d10 to your weekly Resource Points roll.
+    - Once every 4 weeks, you can declare a holiday. That week, your kingdom gains no Unrest from any source, but projects don't progress.
+
+- name: Mint
+  identifier: mint
+  level: 15
+  slots: 1
+  cost: 160
+  rpDice: 2
+  ability: { key: economy, value: 2 }
+  text:
+    - While your kingdom has a Mint, its Economy score increases by 2.
+    - Each Mint in your kingdom adds 2d10 to your weekly Resource Points roll.
+    - Once every 4 weeks, you can debase the coinage and gain 40 RP, but your kingdom gains 2 Unrest.
+
+- name: Opera House
+  identifier: opera-house
+  level: 15
+  slots: 2
+  cost: 160
+  rpDice: 2
+  ability: { key: culture, value: 2 }
+  text:
+    - While your kingdom has an Opera House, its Culture score increases by 2.
+    - Each Opera House in your kingdom adds 2d10 to your weekly Resource Points roll.
+    - While you are in a settlement with an Opera House, party members have advantage on Charisma (Performance) checks.
+
+- name: Palace
+  identifier: palace
+  level: 15
+  slots: 4
+  cost: 300
+  clearsUnrest: true
+  requires: { capital: true }
+  text:
+    - When you build a Palace, your kingdom's Unrest drops to 0.
+    - While your capital has a Palace, your kingdom can have one additional active project.
+    - While your capital has a Palace, the Ruler has advantage on their checks on petition day.
+    - While your capital has a Palace, you can recruit Elite Guard.
+    - A Palace can only be built in your capital.
+
+- name: University
+  identifier: university
+  level: 15
+  slots: 4
+  cost: 200
+  perk: { frequency: week, label: Legend lore }
+  text:
+    - The first time your kingdom builds a University, it gains one additional kingdom feat of your choice.
+    - While your kingdom has a University, you have a +1 bonus to all kingdom checks.
+    - Once per week, while you are in a settlement with a University, its scholars can cast <em>legend lore</em> for the party for free.

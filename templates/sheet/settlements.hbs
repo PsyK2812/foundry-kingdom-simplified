@@ -1,0 +1,72 @@
+<section class="ks-tab {{#if tab.active}}active{{/if}}" data-tab="settlements">
+  <div class="ks-section-head">
+    <span>{{settlementCount}} of {{settlementsAllowed}} settlement(s) allowed at level {{system.level}}</span>
+    {{#if editable}}<button type="button" data-action="addSettlement"><i class="fa-solid fa-plus"></i> Add settlement</button>{{/if}}
+    <button type="button" data-action="openCompendium" data-pack="buildings"><i class="fa-solid fa-book"></i> Buildings</button>
+  </div>
+  {{#unless settlements.length}}<p class="hint">Add your first settlement, then drag buildings from the Kingdom Buildings compendium onto it.</p>{{/unless}}
+
+  {{#each settlements}}
+  <div class="ks-settlement {{#if capital}}ks-capital{{/if}}" data-settlement-id="{{id}}">
+    <div class="ks-settlement-head">
+      <input type="text" value="{{name}}" data-ks-edit="settlements" data-id="{{id}}" data-key="name" {{#unless @root.editable}}disabled{{/unless}}>
+      <select data-ks-edit="settlements" data-id="{{id}}" data-key="size" {{#unless @root.isGM}}disabled{{/unless}}>
+        {{selectOptions sizeOptions selected=size}}
+      </select>
+      <label><input type="checkbox" data-ks-edit="settlements" data-id="{{id}}" data-key="capital" {{checked capital}} {{#unless @root.editable}}disabled{{/unless}}> Capital</label>
+      <label data-tooltip="Beside a river or lake"><input type="checkbox" data-ks-edit="settlements" data-id="{{id}}" data-key="river" {{checked river}} {{#unless @root.editable}}disabled{{/unless}}> River/lake</label>
+      <label data-tooltip="Next to a hills or mountains hex"><input type="checkbox" data-ks-edit="settlements" data-id="{{id}}" data-key="hills" {{checked hills}} {{#unless @root.editable}}disabled{{/unless}}> Hills</label>
+      <span class="ks-slots {{#if over}}ks-alert{{/if}}" data-tooltip="{{slotsTooltip}}">{{slots.used}}/{{slots.total}} slots</span>
+      <span class="ks-food-small" data-tooltip="Food eaten per week">−{{food}} Food</span>
+      {{#if @root.isGM}}<a data-action="deleteSettlement" data-id="{{id}}" data-tooltip="Remove settlement"><i class="fa-solid fa-trash"></i></a>{{/if}}
+    </div>
+    <ul class="ks-buildings">
+      {{#each buildings}}
+      <li class="ks-building" data-item-id="{{id}}">
+        <img src="{{img}}" alt="">
+        <a class="ks-building-name" data-action="openItem" data-item-id="{{id}}">{{name}}</a>
+        <span class="ks-tags">
+          {{#if slots}}<span>{{slots}} slot{{#unless (eq slots 1)}}s{{/unless}}</span>{{/if}}
+          {{#if rpDice}}<span>+{{rpDice}}d10</span>{{/if}}
+          {{#if food}}<span>+{{food}} Food</span>{{/if}}
+        </span>
+        {{#if orchard}}
+        <label class="ks-inline" data-tooltip="Farmland hexes next to this settlement (max 3): +1 Food each">Farmland next to it <input type="number" min="0" max="3" value="{{counter}}" data-item-edit="system.counter" data-item-id="{{id}}" {{#unless @root.editable}}disabled{{/unless}}></label>
+        {{/if}}
+        {{#if menagerie}}
+        <label class="ks-inline">Creatures <input type="number" min="0" max="4" value="{{counter}}" data-item-edit="system.counter" data-item-id="{{id}}" {{#unless @root.editable}}disabled{{/unless}}></label>
+        {{/if}}
+        {{#if stockyard}}
+        <button type="button" data-action="slaughter" data-item-id="{{id}}" {{#unless stockyard.ready}}disabled{{/unless}} data-tooltip="+4 Food this week, none next week">
+          Slaughter{{#unless stockyard.ready}} ({{stockyard.wait}} wk){{/unless}}
+        </button>
+        {{/if}}
+        {{#if perk}}
+        <label class="ks-perk {{#if perk.used}}used{{/if}}" data-tooltip="{{perk.frequency}}">
+          <input type="checkbox" data-action="togglePerk" data-item-id="{{id}}" {{checked perk.used}}> {{perk.label}}
+        </label>
+        {{/if}}
+        {{#if @root.isGM}}<a data-action="deleteItem" data-item-id="{{id}}" data-tooltip="Remove"><i class="fa-solid fa-trash"></i></a>{{/if}}
+      </li>
+      {{/each}}
+    </ul>
+    <div class="ks-drop-hint">
+      Drop a building here
+      {{#if @root.editable}}or <a data-action="buildIn" data-id="{{id}}">start a Build Structure project</a>{{/if}}
+    </div>
+  </div>
+  {{/each}}
+
+  {{#if unplaced.length}}
+  <div class="ks-settlement">
+    <div class="ks-settlement-head"><strong>Buildings not in a settlement</strong></div>
+    <ul class="ks-buildings">
+      {{#each unplaced}}
+      <li class="ks-building" data-item-id="{{id}}"><a data-action="openItem" data-item-id="{{id}}">{{name}}</a>
+        <span class="hint">drag onto a settlement</span>
+        {{#if @root.isGM}}<a data-action="deleteItem" data-item-id="{{id}}"><i class="fa-solid fa-trash"></i></a>{{/if}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+</section>

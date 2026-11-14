@@ -1,0 +1,96 @@
+<section class="ks-tab {{#if tab.active}}active{{/if}}" data-tab="overview">
+  <div class="ks-abilities">
+    {{#each abilities}}
+    <button type="button" class="ks-ability" data-action="rollAbility" data-ability="{{key}}" data-tooltip="{{tooltip}}">
+      <span class="ks-ability-label">{{label}}</span>
+      <span class="ks-ability-mod">{{mod}}</span>
+      <span class="ks-ability-score">{{total}}</span>
+      <span class="ks-ability-advisors">{{advisors}}</span>
+    </button>
+    {{/each}}
+  </div>
+  {{#if vacantCount}}<p class="ks-warning"><i class="fa-solid fa-triangle-exclamation"></i> {{vacantCount}} vacant advisor role(s): −2 to that ability each.</p>{{/if}}
+
+  <div class="ks-stats">
+    <div class="ks-stat">
+      <label>Resource Points</label>
+      <div class="ks-stat-row">
+        <input type="number" name="system.rp" value="{{system.rp}}" min="0" {{#unless isGM}}disabled{{/unless}}>
+        {{#if isGM}}<a data-action="adjust" data-field="rp" data-tooltip="Change with a log entry"><i class="fa-solid fa-plus-minus"></i></a>{{/if}}
+      </div>
+      <small data-tooltip="{{dicePool.tooltip}}">Weekly roll: {{dicePool.total}}d10</small>
+    </div>
+    <div class="ks-stat {{#if system.unrest}}ks-alert{{/if}}">
+      <label>Unrest</label>
+      <div class="ks-stat-row">
+        <input type="number" name="system.unrest" value="{{system.unrest}}" min="0" {{#unless isGM}}disabled{{/unless}}>
+        {{#if isGM}}<a data-action="adjust" data-field="unrest" data-tooltip="Change with a log entry"><i class="fa-solid fa-plus-minus"></i></a>{{/if}}
+      </div>
+      <small>Checks −{{unrest.penalty}} · Projects +{{unrest.surcharge}}% RP</small>
+    </div>
+    <div class="ks-stat {{#if system.hunger}}ks-alert{{/if}}">
+      <label>Hunger</label>
+      <div class="ks-stat-row">
+        <input type="number" name="system.hunger" value="{{system.hunger}}" min="0" max="3" {{#unless isGM}}disabled{{/unless}}>
+      </div>
+      <small>{{#if system.hunger}}+{{system.hunger}} Unrest/week{{else}}Fed{{/if}}</small>
+    </div>
+    <div class="ks-stat">
+      <label>Renown</label>
+      <div class="ks-stat-row">
+        <input type="number" name="system.renown" value="{{system.renown}}" min="0" {{#unless isGM}}disabled{{/unless}}>
+        {{#if isGM}}<a data-action="awardRenown" data-tooltip="Award Renown"><i class="fa-solid fa-star"></i></a>{{/if}}
+      </div>
+      <small>{{#if renownNeeded}}{{renownNeeded}} for next level{{else}}Max level{{/if}}</small>
+    </div>
+  </div>
+
+  <div class="ks-stats">
+    <div class="ks-stat">
+      <label>Farmland hexes</label>
+      <input type="number" name="system.farmland" value="{{system.farmland}}" min="0" {{#unless editable}}disabled{{/unless}}>
+    </div>
+    <div class="ks-stat {{#if food.negative}}ks-alert{{/if}}">
+      <label>Food per week</label>
+      <div class="ks-food">
+        <span data-tooltip="{{food.prodTooltip}}">{{food.production}} produced</span>
+        <span data-tooltip="{{food.consTooltip}}">{{food.consumption}} eaten</span>
+        <strong>{{food.supplies}}</strong>
+      </div>
+    </div>
+    <div class="ks-stat">
+      <label>Level {{system.level}}</label>
+      {{#if isGM}}<input type="number" name="system.level" value="{{system.level}}" min="1" max="20">{{/if}}
+      <small>{{projectCount}}/{{maxProjects}} projects · {{settlementCount}}/{{settlementsAllowed}} settlements</small>
+    </div>
+  </div>
+
+  {{#each agreementSurcharge.parts}}<p class="ks-notice">Building costs +{{value}}% RP until {{label}} is repaid (Kingdom tab).</p>{{/each}}
+  <div class="ks-button-row">
+    <button type="button" data-action="quell" {{#unless quellReady}}disabled{{/unless}}>
+      <i class="fa-solid fa-dove"></i> Quell Unrest{{#if quellUsed}} (used this week){{/if}}
+    </button>
+    <button type="button" data-action="buyRp" {{#unless purchase.remaining}}disabled{{/unless}}>
+      <i class="fa-solid fa-coins"></i> Buy RP ({{purchase.rate}} gp each, {{purchase.remaining}} left this week)
+    </button>
+    {{#if hasBank}}
+      {{#if system.loan.amount}}
+      <button type="button" data-action="repayLoan" class="{{#if loanOverdue}}ks-alert{{/if}}"><i class="fa-solid fa-building-columns"></i> Repay loan ({{loanDue}} RP, due week {{system.loan.dueWeek}})</button>
+      {{else}}
+      <button type="button" data-action="takeLoan"><i class="fa-solid fa-building-columns"></i> Bank loan</button>
+      {{/if}}
+    {{/if}}
+  </div>
+
+  {{#if actions.length}}
+  <h3>Kingdom actions</h3>
+  <ul class="ks-actions">
+    {{#each actions}}
+    <li>
+      <button type="button" data-action="kingdomAction" data-key="{{key}}" {{#unless ready}}disabled{{/unless}}>{{label}}</button>
+      <span class="hint">{{hint}}{{#unless ready}} — available in {{wait}} week(s){{/unless}}</span>
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+</section>

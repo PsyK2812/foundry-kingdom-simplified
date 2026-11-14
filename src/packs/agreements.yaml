@@ -1,0 +1,17 @@
+# Kingdom agreements: deals with outside parties. Dropped onto a kingdom by the GM.
+
+- name: Agreement with Ioseph Sellemius
+  identifier: ioseph-sellemius
+  partner: Ioseph Sellemius
+  loan: 100
+  repayTotal: 100
+  surcharge: 20
+  surchargeStep: 5
+  minPayment: 5
+  periodWeeks: 4
+  text:
+    - "<strong>Loan.</strong> When you sign this agreement, your kingdom receives 100 RP worth of building materials."
+    - "<strong>Building Surcharge.</strong> While any of the debt is outstanding, Build Structure projects cost 20% more RP."
+    - "<strong>Repayment.</strong> Your kingdom must repay at least 5 RP toward the debt each month (4 weeks). You can repay more at any time."
+    - "<strong>Missed Payment.</strong> Each month the minimum payment isn't made, the building surcharge permanently increases by 5% (to 25%, then 30%, and so on)."
+    - "<strong>End of the Agreement.</strong> Once your kingdom has repaid the full 100 RP, the agreement and its surcharge end."

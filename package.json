@@ -1,0 +1,22 @@
+{
+  "name": "foundry-kingdom-simplified",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node tools/build-packs.mjs",
+    "test": "node tools/test-rules.mjs && node tools/smoke-test.mjs",
+    "release": "node tools/build-packs.mjs && node tools/release.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^3.0.5",
+    "eslint": "^9.39.5",
+    "globals": "^17.13.0",
+    "handlebars": "^4.7.10",
+    "js-yaml": "^5.5.0"
+  },
+  "private": true
+}

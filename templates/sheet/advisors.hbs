@@ -1,0 +1,24 @@
+<section class="ks-tab {{#if tab.active}}active{{/if}}" data-tab="advisors">
+  <p class="hint">Drag a character onto a role, or type an NPC's name. A character can fill only one role. Each vacant role (empty or away) gives −2 to its ability.</p>
+  <table class="ks-table ks-advisors">
+    <thead><tr><th class="ks-col-role">Role</th><th>Advisor</th><th class="ks-col-small ks-center">Away</th>{{#if advisors.0.deputyOk}}<th class="ks-col-small ks-center">Deputy</th>{{/if}}<th class="ks-col-small ks-center">Roll</th></tr></thead>
+    <tbody>
+      {{#each advisors}}
+      <tr data-advisor="{{key}}" class="{{#if vacant}}ks-vacant{{/if}}">
+        <td><strong>{{label}}</strong><br><small>{{ability}}</small></td>
+        <td class="ks-advisor-cell"><div class="ks-advisor-slot">
+          {{#if actorUuid}}
+            <span class="ks-linked">{{#if actorImg}}<img src="{{actorImg}}" alt="">{{/if}} {{actorName}}</span>
+            {{#if @root.editable}}<a data-action="clearAdvisor" data-advisor="{{key}}" data-tooltip="Clear"><i class="fa-solid fa-xmark"></i></a>{{/if}}
+          {{else}}
+            <input type="text" name="system.advisors.{{key}}.name" value="{{name}}" placeholder="{{#if isDeputy}}Deputy (disadvantage){{else}}Drop a character or type a name{{/if}}" {{#unless @root.editable}}disabled{{/unless}}>
+          {{/if}}
+        </div></td>
+        <td class="ks-center"><input type="checkbox" name="system.advisors.{{key}}.away" {{checked away}} {{#unless @root.editable}}disabled{{/unless}}></td>
+        {{#if deputyOk}}<td class="ks-center"><input type="checkbox" name="system.advisors.{{key}}.deputy" {{checked deputy}} {{#unless @root.editable}}disabled{{/unless}} data-tooltip="Town Hall deputy fills one vacant role"></td>{{/if}}
+        <td class="ks-center"><button type="button" data-action="rollAdvisor" data-advisor="{{key}}" data-tooltip="Petition check"><i class="fa-solid fa-dice-d20"></i></button></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>

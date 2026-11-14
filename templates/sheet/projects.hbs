@@ -1,0 +1,34 @@
+<section class="ks-tab {{#if tab.active}}active{{/if}}" data-tab="projects">
+  <div class="ks-section-head">
+    <span>{{projectCount}} of {{maxProjects}} active project(s) · up to {{maxFocus}} focus project(s) per week</span>
+    {{#if editable}}<button type="button" data-action="newProject"><i class="fa-solid fa-plus"></i> New project</button>{{/if}}
+  </div>
+  {{#unless projects.length}}<p class="hint">No active projects.</p>{{/unless}}
+  <ul class="ks-projects">
+    {{#each projects}}
+    <li class="ks-project {{#if focus}}ks-focus{{/if}}">
+      <div class="ks-project-head">
+        <a data-action="focusProject" data-id="{{id}}" data-tooltip="{{#if focus}}Focus project (double progress){{else}}Make focus project{{/if}}">
+          <i class="fa-{{#if focus}}solid{{else}}regular{{/if}} fa-star"></i>
+        </a>
+        <strong>{{name}}</strong>
+        <span class="hint">{{typeLabel}}{{#if settlementName}} · {{settlementName}}{{/if}} · paid {{cost}} RP</span>
+      </div>
+      <div class="ks-progress">
+        <div class="ks-progress-bar"><span style="width: {{pct}}%"></span></div>
+        <span>
+          {{#if @root.isGM}}
+          <input type="number" min="0" value="{{weeksDone}}" data-ks-edit="projects" data-id="{{id}}" data-key="weeksDone">
+          / <input type="number" min="1" value="{{weeksNeeded}}" data-ks-edit="projects" data-id="{{id}}" data-key="weeksNeeded">
+          {{else}}{{weeksDone}} / {{weeksNeeded}}{{/if}}
+          weeks · +{{rate}}/week
+        </span>
+        {{#if @root.isGM}}
+        <a data-action="completeProject" data-id="{{id}}" data-tooltip="Complete now"><i class="fa-solid fa-flag-checkered"></i></a>
+        <a data-action="cancelProject" data-id="{{id}}" data-tooltip="Cancel"><i class="fa-solid fa-xmark"></i></a>
+        {{/if}}
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</section>

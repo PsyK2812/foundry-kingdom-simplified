@@ -1,0 +1,13 @@
+<div class="ks-wizard">
+  <ol class="ks-steps">
+    {{#each steps}}
+    <li class="{{#if active}}active{{/if}} {{#if done}}done{{/if}}">{{label}}</li>
+    {{/each}}
+  </ol>
+  <section class="ks-step-body">
+    {{{body}}}
+  </section>
+  <footer class="ks-wizard-footer">
+    <button type="button" data-action="next" class="ks-primary"><i class="fa-solid fa-arrow-right"></i> {{nextLabel}}</button>
+  </footer>
+</div>

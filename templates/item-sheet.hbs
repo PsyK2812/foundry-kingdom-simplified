@@ -1,0 +1,76 @@
+<div class="ks-item">
+  <header class="ks-header">
+    <img class="ks-portrait small" src="{{item.img}}" data-action="editImage" data-edit="img" alt="">
+    <div class="ks-title">
+      <input class="ks-name" type="text" name="name" value="{{item.name}}" {{#unless editable}}disabled{{/unless}}>
+      <div class="ks-subtitle">
+        {{#if isBuilding}}<span>Building · level {{system.level}} · {{system.slots}} slot(s) · {{system.cost}} RP</span>{{/if}}
+        {{#if isAgreement}}<span>Agreement · {{system.loan}} RP now, {{system.repayTotal}} RP to repay · buildings +{{system.surcharge}}%</span>{{/if}}
+        {{#if isFeat}}<span>Kingdom feat{{#if system.prerequisite}} · level {{system.prerequisite}}+{{/if}}</span>{{/if}}
+      </div>
+    </div>
+  </header>
+
+  <div class="ks-description">{{{enriched}}}</div>
+
+  {{#if editable}}
+  <details class="ks-item-details">
+    <summary>Rules data</summary>
+    <div class="form-group"><label>Identifier</label><input type="text" name="system.identifier" value="{{system.identifier}}">
+      <p class="hint">Used by the automation. Keep the compendium value for official buildings and feats.</p></div>
+
+    {{#if isBuilding}}
+    <div class="form-group"><label>Kingdom level</label><input type="number" class="ks-short" name="system.level" value="{{system.level}}" min="1" max="20"></div>
+    <div class="form-group"><label>Slots</label><input type="number" class="ks-short" name="system.slots" value="{{system.slots}}" min="0"></div>
+    <div class="form-group"><label>RP cost</label><input type="number" class="ks-short" name="system.cost" value="{{system.cost}}" min="0"></div>
+    <div class="form-group"><label>d10s to weekly RP roll</label><input type="number" class="ks-short" name="system.rpDice" value="{{system.rpDice}}"></div>
+    <div class="form-group"><label>Food per week</label><input type="number" class="ks-short" name="system.food" value="{{system.food}}"></div>
+    <div class="form-group"><label>Ability bonus</label>
+      <select name="system.ability.key">{{selectOptions abilityOptions selected=system.ability.key}}</select>
+      <input type="number" class="ks-short" name="system.ability.value" value="{{system.ability.value}}"></div>
+    <div class="form-group"><label>Extra building slots</label><input type="number" class="ks-short" name="system.slotBonus" value="{{system.slotBonus}}"></div>
+    <div class="form-group"><label>Unrest each time it's built</label><input type="number" class="ks-short" name="system.unrestOnBuild" value="{{system.unrestOnBuild}}"></div>
+    <div class="form-group"><label>Unrest the first time it's built</label><input type="number" class="ks-short" name="system.unrestFirstBuild" value="{{system.unrestFirstBuild}}"></div>
+    <div class="form-group"><label>Building it sets Unrest to 0</label><input type="checkbox" name="system.clearsUnrest" {{checked system.clearsUnrest}}></div>
+    <div class="form-group"><label>Requires</label>
+      <label class="ks-inline"><input type="checkbox" name="system.requires.river" {{checked system.requires.river}}> River/lake</label>
+      <label class="ks-inline"><input type="checkbox" name="system.requires.hills" {{checked system.requires.hills}}> Hills</label>
+      <label class="ks-inline"><input type="checkbox" name="system.requires.capital" {{checked system.requires.capital}}> Capital</label>
+    </div>
+    <div class="form-group stacked"><label>20% cheaper projects</label>
+      <div class="ks-checks">
+        {{#each discounts}}<label class="ks-inline"><input type="checkbox" data-discount="{{key}}" {{checked checked}}> {{label}}</label>{{/each}}
+      </div>
+    </div>
+    {{/if}}
+
+    {{#if isAgreement}}
+    <div class="form-group"><label>Partner</label><input type="text" name="system.partner" value="{{system.partner}}"></div>
+    <div class="form-group"><label>RP received on signing</label><input type="number" class="ks-short" name="system.loan" value="{{system.loan}}" min="0"></div>
+    <div class="form-group"><label>RP to repay</label><input type="number" class="ks-short" name="system.repayTotal" value="{{system.repayTotal}}" min="0"></div>
+    <div class="form-group"><label>Building surcharge (%)</label><input type="number" class="ks-short" name="system.surcharge" value="{{system.surcharge}}" min="0"></div>
+    <div class="form-group"><label>Surcharge rise per missed payment (%)</label><input type="number" class="ks-short" name="system.surchargeStep" value="{{system.surchargeStep}}" min="0"></div>
+    <div class="form-group"><label>Minimum payment (RP)</label><input type="number" class="ks-short" name="system.minPayment" value="{{system.minPayment}}" min="0"></div>
+    <div class="form-group"><label>Payment period (weeks)</label><input type="number" class="ks-short" name="system.periodWeeks" value="{{system.periodWeeks}}" min="1"></div>
+    {{#if owned}}
+    <div class="form-group"><label>Debt left (RP)</label><input type="number" class="ks-short" name="system.debt" value="{{system.debt}}" min="0"></div>
+    <div class="form-group"><label>Paid this period (RP)</label><input type="number" class="ks-short" name="system.paidThisPeriod" value="{{system.paidThisPeriod}}" min="0"></div>
+    {{/if}}
+    {{/if}}
+
+    {{#if isFeat}}
+    <div class="form-group"><label>Prerequisite level</label><input type="number" class="ks-short" name="system.prerequisite" value="{{system.prerequisite}}" min="0" max="20"></div>
+    <div class="form-group"><label>Can be taken more than once</label><input type="checkbox" name="system.repeatable" {{checked system.repeatable}}></div>
+    <div class="form-group"><label>Chosen ability</label><select name="system.ability">{{selectOptions abilityOptions selected=system.ability}}</select></div>
+    {{/if}}
+
+    {{#unless isAgreement}}
+    <div class="form-group"><label>Limited use</label>
+      <select name="system.perk.frequency">{{selectOptions frequencyOptions selected=system.perk.frequency}}</select>
+      <input type="text" name="system.perk.label" value="{{system.perk.label}}" placeholder="Checkbox label"></div>
+    {{/unless}}
+    <div class="form-group stacked"><label>Description (HTML)</label>
+      <textarea name="system.description" rows="8">{{system.description}}</textarea></div>
+  </details>
+  {{/if}}
+</div>

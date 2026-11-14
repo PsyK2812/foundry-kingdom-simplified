@@ -1,0 +1,178 @@
+<section class="ks-tab {{#if tab.active}}active{{/if}}" data-tab="kingdom">
+  <div class="ks-columns">
+    <fieldset>
+      <legend>Founding</legend>
+      <div class="form-group">
+        <label>Government</label>
+        <select name="system.government" {{#unless isGM}}disabled{{/unless}}>{{selectOptions governmentOptions selected=system.government}}</select>
+      </div>
+      {{#if governmentAbilities}}<p class="hint">+2 {{governmentAbilities}}, and +2 to a third ability:</p>{{/if}}
+      <div class="form-group">
+        <label>Government's free +2</label>
+        <select name="system.setup.governmentChoice" {{#unless isGM}}disabled{{/unless}}>{{selectOptions abilityOptions selected=system.setup.governmentChoice}}</select>
+      </div>
+      <div class="form-group">
+        <label>Your free +2</label>
+        <select name="system.setup.freeChoice" {{#unless isGM}}disabled{{/unless}}>{{selectOptions abilityOptions selected=system.setup.freeChoice}}</select>
+      </div>
+      <div class="form-group">
+        <label>Heartland</label>
+        <input type="text" name="system.setup.heartland.label" value="{{system.setup.heartland.label}}" placeholder="Name" {{#unless isGM}}disabled{{/unless}}>
+      </div>
+      <div class="form-group ks-indent">
+        <label>Bonus</label>
+        <select name="system.setup.heartland.ability" {{#unless isGM}}disabled{{/unless}}>{{selectOptions abilityOptions selected=system.setup.heartland.ability}}</select>
+        <input type="number" class="ks-short" name="system.setup.heartland.bonus" value="{{system.setup.heartland.bonus}}" {{#unless isGM}}disabled{{/unless}}>
+      </div>
+      <div class="form-group ks-indent">
+        <label>Penalty / second ability</label>
+        <select name="system.setup.heartland.ability2" {{#unless isGM}}disabled{{/unless}}>{{selectOptions abilityOptions selected=system.setup.heartland.ability2}}</select>
+        <input type="number" class="ks-short" name="system.setup.heartland.bonus2" value="{{system.setup.heartland.bonus2}}" placeholder="−2" {{#unless isGM}}disabled{{/unless}}>
+      </div>
+      <div class="form-group">
+        <label>Sponsor</label>
+        <input type="text" name="system.setup.sponsor.label" value="{{system.setup.sponsor.label}}" placeholder="Name" {{#unless isGM}}disabled{{/unless}}>
+      </div>
+      <div class="form-group ks-indent">
+        <label>Bonus</label>
+        <select name="system.setup.sponsor.ability" {{#unless isGM}}disabled{{/unless}}>{{selectOptions abilityOptions selected=system.setup.sponsor.ability}}</select>
+        <input type="number" class="ks-short" name="system.setup.sponsor.bonus" value="{{system.setup.sponsor.bonus}}" {{#unless isGM}}disabled{{/unless}}>
+      </div>
+      <div class="form-group ks-indent">
+        <label>Penalty / second ability</label>
+        <select name="system.setup.sponsor.ability2" {{#unless isGM}}disabled{{/unless}}>{{selectOptions abilityOptions selected=system.setup.sponsor.ability2}}</select>
+        <input type="number" class="ks-short" name="system.setup.sponsor.bonus2" value="{{system.setup.sponsor.bonus2}}" placeholder="−2" {{#unless isGM}}disabled{{/unless}}>
+      </div>
+      {{#each asi}}
+      <div class="form-group">
+        <label>Ability Score Improvement (level {{level}})</label>
+        <select name="system.asi.{{level}}" {{#unless @root.isGM}}disabled{{/unless}}>{{selectOptions @root.abilityOptions selected=value}}</select>
+      </div>
+      {{/each}}
+      {{#if isGM}}
+      <details>
+        <summary>Manual ability adjustments</summary>
+        {{#each abilities}}
+        <div class="form-group">
+          <label>{{label}}</label>
+          <input type="number" class="ks-short" name="system.abilities.{{key}}.adjustment" value="{{adjustment}}">
+        </div>
+        {{/each}}
+      </details>
+      {{/if}}
+    </fieldset>
+
+    <fieldset>
+      <legend>Feats ({{featCount}}/{{featSlots}})</legend>
+      <ul class="ks-feats">
+        {{#each feats}}
+        <li class="{{#if tooLow}}ks-alert{{/if}}">
+          <img src="{{img}}" alt="">
+          <a data-action="openItem" data-item-id="{{id}}">{{name}}</a>
+          {{#if assurance}}
+          <select data-item-edit="system.ability" data-item-id="{{id}}" {{#unless @root.editable}}disabled{{/unless}}>{{selectOptions @root.abilityOptions selected=ability}}</select>
+          {{/if}}
+          {{#if perk}}
+          <label class="ks-perk {{#if perk.used}}used{{/if}}" data-tooltip="{{perk.frequency}}">
+            <input type="checkbox" data-action="togglePerk" data-item-id="{{id}}" {{checked perk.used}}> used
+          </label>
+          {{/if}}
+          {{#if @root.isGM}}<a data-action="deleteItem" data-item-id="{{id}}" data-tooltip="Remove"><i class="fa-solid fa-trash"></i></a>{{/if}}
+        </li>
+        {{/each}}
+      </ul>
+      <p class="hint">Drop feats from the <a data-action="openCompendium" data-pack="feats">Kingdom Feats</a> compendium onto this sheet.</p>
+    </fieldset>
+  </div>
+
+  <fieldset>
+    <legend>Agreements</legend>
+    {{#each agreements}}
+    <div class="ks-agreement {{#if repaid}}repaid{{/if}}">
+      <div class="ks-agreement-head">
+        <img src="{{img}}" alt="">
+        <a data-action="openItem" data-item-id="{{id}}"><strong>{{name}}</strong></a>
+        {{#if repaid}}<span class="ks-badge">Repaid</span>
+        {{else}}<span class="ks-tags"><span>Buildings +{{surcharge}}% RP</span>{{#if missed}}<span class="ks-alert">{{missed}} missed</span>{{/if}}</span>{{/if}}
+        {{#if @root.isGM}}<a data-action="deleteItem" data-item-id="{{id}}" data-tooltip="Remove"><i class="fa-solid fa-trash"></i></a>{{/if}}
+      </div>
+      {{#unless repaid}}
+      <div class="ks-progress">
+        <div class="ks-progress-bar"><span style="width: {{pct}}%"></span></div>
+        <span>{{debt}} of {{total}} RP left</span>
+      </div>
+      <div class="ks-agreement-due">
+        <span class="{{#if due}}ks-warning{{/if}}">{{#if due}}{{due}} RP still due by the end of week {{dueWeek}}{{else}}Paid {{paid}}/{{minPayment}} this period (until week {{dueWeek}}){{/if}}</span>
+        {{#if @root.editable}}<button type="button" data-action="repayAgreement" data-item-id="{{id}}"><i class="fa-solid fa-coins"></i> Repay</button>{{/if}}
+      </div>
+      {{/unless}}
+    </div>
+    {{else}}
+    <p class="hint">None. The GM drops agreements from the <a data-action="openCompendium" data-pack="agreements">Kingdom Agreements</a> compendium onto this sheet.</p>
+    {{/each}}
+  </fieldset>
+
+  <div class="ks-columns">
+    <fieldset>
+      <legend>Trade agreements</legend>
+      <table class="ks-table">
+        <thead><tr><th>Partner</th><th>d10s</th><th></th></tr></thead>
+        <tbody>
+          {{#each system.tradeAgreements}}
+          <tr>
+            <td><input type="text" value="{{name}}" data-ks-edit="tradeAgreements" data-id="{{id}}" data-key="name" {{#unless @root.isGM}}disabled{{/unless}}></td>
+            <td><input type="number" class="ks-short" min="0" value="{{dice}}" data-ks-edit="tradeAgreements" data-id="{{id}}" data-key="dice" {{#unless @root.isGM}}disabled{{/unless}}></td>
+            <td>{{#if @root.isGM}}<a data-action="deleteRow" data-field="tradeAgreements" data-id="{{id}}"><i class="fa-solid fa-trash"></i></a>{{/if}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{#if isGM}}<button type="button" data-action="addRow" data-field="tradeAgreements"><i class="fa-solid fa-plus"></i> Add agreement</button>{{/if}}
+    </fieldset>
+
+    <fieldset>
+      <legend>Active events</legend>
+      <table class="ks-table">
+        <thead><tr><th>Event</th><th data-tooltip="Weeks left; empty = ongoing">Weeks</th><th>d10s</th><th>Food</th><th></th></tr></thead>
+        <tbody>
+          {{#each system.events}}
+          <tr>
+            <td><input type="text" value="{{name}}" data-ks-edit="events" data-id="{{id}}" data-key="name" {{#unless @root.isGM}}disabled{{/unless}}></td>
+            <td><input type="number" class="ks-short" min="0" value="{{weeksLeft}}" placeholder="∞" data-ks-edit="events" data-id="{{id}}" data-key="weeksLeft" {{#unless @root.isGM}}disabled{{/unless}}></td>
+            <td><input type="number" class="ks-short" value="{{dice}}" data-ks-edit="events" data-id="{{id}}" data-key="dice" {{#unless @root.isGM}}disabled{{/unless}}></td>
+            <td><input type="number" class="ks-short" value="{{food}}" data-ks-edit="events" data-id="{{id}}" data-key="food" {{#unless @root.isGM}}disabled{{/unless}}></td>
+            <td>{{#if @root.isGM}}
+              <a data-action="eventUnrest" data-id="{{id}}" data-tooltip="Add Unrest from this event"><i class="fa-solid fa-fire"></i></a>
+              <a data-action="deleteRow" data-field="events" data-id="{{id}}"><i class="fa-solid fa-trash"></i></a>{{/if}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{#if isGM}}<button type="button" data-action="addRow" data-field="events"><i class="fa-solid fa-plus"></i> Add event</button>{{/if}}
+    </fieldset>
+  </div>
+
+  <div class="ks-columns">
+    <fieldset>
+      <legend>Armies (placeholder for the army module)</legend>
+      <div class="form-group"><label>Upkeep (RP per week)</label><input type="number" class="ks-short" min="0" name="system.army.upkeep" value="{{system.army.upkeep}}" {{#unless isGM}}disabled{{/unless}}></div>
+      <div class="form-group"><label>Food per week</label><input type="number" class="ks-short" min="0" name="system.army.food" value="{{system.army.food}}" {{#unless isGM}}disabled{{/unless}}></div>
+      {{#if isGM}}
+      <div class="form-group"><label>Week</label><input type="number" class="ks-short" min="1" name="system.week" value="{{system.week}}"></div>
+      <div class="form-group"><label>Missed petition days in a row</label><input type="number" class="ks-short" min="0" name="system.missedPetitions" value="{{system.missedPetitions}}"></div>
+      <div class="form-group"><label>Bonus d10s on next RP roll</label><input type="number" class="ks-short" name="system.pendingDice" value="{{system.pendingDice}}"></div>
+      {{/if}}
+    </fieldset>
+    <fieldset>
+      <legend>Notes</legend>
+      <textarea name="system.notes" rows="6" {{#unless editable}}disabled{{/unless}}>{{system.notes}}</textarea>
+    </fieldset>
+  </div>
+
+  <fieldset>
+    <legend>Kingdom log</legend>
+    <ul class="ks-log">
+      {{#each log}}<li><span class="ks-log-week">W{{week}}</span> {{text}}</li>{{else}}<li class="hint">Nothing yet.</li>{{/each}}
+    </ul>
+  </fieldset>
+</section>

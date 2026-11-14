@@ -1,0 +1,4 @@
+node_modules/
+src/packs/_json/
+packs/*/LOCK
+packs/*/LOG*

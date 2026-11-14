@@ -1,0 +1,111 @@
+{
+  "id": "kingdom-simplified",
+  "type": "module",
+  "title": "Kingdom Rules (Simplified)",
+  "description": "Kingdom sheet, buildings, feats, projects and a weekly turn wizard for Yannic's simplified Kingmaker kingdom rules on the D&D 5e system.",
+  "version": "0.2.0",
+  "authors": [
+    {
+      "name": "Yannic"
+    }
+  ],
+  "url": "https://github.com/PsyK2812/foundry-kingdom-simplified",
+  "manifest": "https://raw.githubusercontent.com/PsyK2812/foundry-kingdom-simplified/main/module.json",
+  "download": "https://raw.githubusercontent.com/PsyK2812/foundry-kingdom-simplified/main/kingdom-simplified.zip",
+  "compatibility": {
+    "minimum": "14.367",
+    "verified": "14.370"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "6.0.5"
+        }
+      }
+    ]
+  },
+  "documentTypes": {
+    "Actor": {
+      "kingdom": {}
+    },
+    "Item": {
+      "building": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "feat": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "agreement": {
+        "htmlFields": [
+          "description"
+        ]
+      }
+    }
+  },
+  "esmodules": [
+    "scripts/main.mjs"
+  ],
+  "styles": [
+    "styles/kingdom.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [
+    {
+      "name": "buildings",
+      "label": "Kingdom Buildings",
+      "path": "packs/buildings",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "feats",
+      "label": "Kingdom Feats",
+      "path": "packs/feats",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "agreements",
+      "label": "Kingdom Agreements",
+      "path": "packs/agreements",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Kingdom",
+      "sorting": "m",
+      "packs": [
+        "buildings",
+        "feats",
+        "agreements"
+      ]
+    }
+  ]
+}

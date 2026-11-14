@@ -1,0 +1,6 @@
+{
+  "TYPES.Actor.kingdom-simplified.kingdom": "Kingdom",
+  "TYPES.Item.kingdom-simplified.building": "Kingdom Building",
+  "TYPES.Item.kingdom-simplified.feat": "Kingdom Feat",
+  "TYPES.Item.kingdom-simplified.agreement": "Kingdom Agreement"
+}

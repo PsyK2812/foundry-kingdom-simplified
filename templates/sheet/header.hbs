@@ -1,0 +1,17 @@
+<header class="ks-header">
+  <img class="ks-portrait" src="{{actor.img}}" data-action="editImage" data-edit="img" alt="{{actor.name}}">
+  <div class="ks-title">
+    <input class="ks-name" type="text" name="name" value="{{actor.name}}" placeholder="Kingdom name" {{#unless editable}}disabled{{/unless}}>
+    <div class="ks-subtitle">
+      <span>Level {{system.level}}</span>
+      <span>Week {{system.week}}</span>
+      <span>DC {{system.dc}}</span>
+      <span>Proficiency +{{system.prof}}</span>
+      {{#if holiday}}<span class="ks-badge">Holiday</span>{{/if}}
+    </div>
+  </div>
+  <div class="ks-header-buttons">
+    {{#if canLevel}}<button type="button" data-action="levelUp" class="ks-primary"><i class="fa-solid fa-arrow-up"></i> Level up</button>{{/if}}
+    {{#if isGM}}<button type="button" data-action="startTurn" class="ks-primary"><i class="fa-solid fa-hourglass-half"></i> Weekly turn</button>{{/if}}
+  </div>
+</header>
